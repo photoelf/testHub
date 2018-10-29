@@ -60,11 +60,12 @@ def proxy_handler(client_socket, remote_host, remote_port, receive_first):
 
     # loop: read from local, send to remote, send to local
     while True:
+        remote_buff = ""
         # read from local_host
         local_buff = receive_from(client_socket)
 
         if len(local_buff):
-            print("[==>] Received {0} bytes from local_host", len(local_buff))
+            print("[==>] Received {0} bytes from local_host".format(len(local_buff)))
             hexdump(local_buff.decode(errors="ignore"))
 
             # send local buffer to request handler
